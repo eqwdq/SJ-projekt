@@ -51,7 +51,7 @@ require_once 'conn.php';
     if(isset($_POST['login'])){
         $username = $_POST['username'];
         $pass = $_POST['pass'];
-        $select = mysqli_query($conn,"SELECT * FROM `login` where username = '$username' and pass = '$pass' ");
+        $select = mysqli_query($conn,"SELECT * FROM `login` where `username` = '$username' and `pass` = '$pass' ");
         $row = mysqli_fetch_array($select);
 
         if(is_array($row)){
@@ -74,14 +74,14 @@ require_once 'conn.php';
         if(empty($username) || empty($pass)) {
             $message = "Please fill in all the fields.";
         } else {
-            $checkUsername = mysqli_query($conn, "SELECT * FROM `login` WHERE username = '$username'");
+            $checkUsername = mysqli_query($conn, "SELECT * FROM `login` WHERE `username` = '$username'");
             if(mysqli_num_rows($checkUsername) > 0) {
                 $message = "Username is already taken. Please choose a different username.";
             } else {
                 $insertUser = mysqli_query($conn, "INSERT INTO `login` (`username`, `pass`) VALUES ('$username', '$pass')");
                 if($insertUser) {
                     $_SESSION["username"] = $username;
-                    header("location:index.php");
+                    header("location: index.php");
                 } else {
                     $message = "An error occurred. Please try again later.";
                 }

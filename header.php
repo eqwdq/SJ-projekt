@@ -8,15 +8,7 @@ require_once 'conn.php';
                 <div class="row">
                     <div class="col-md-6 col-sm-6">
                         <div class="top-header-left">
-                        <?php
-                        if (!isset($_SESSION["username"])) {
-                            echo '<a href="signin.php">Log In / Sign up</a>';
-                        } else {
-                            $username = $_SESSION["username"];
-                            echo '<span class="w-50 btn btn-lg btn-transparent">' . $username . '</span>';
-                        }
-                        ?>
-                        <a href = "logout.php"> logout </a>
+
 
 
 
